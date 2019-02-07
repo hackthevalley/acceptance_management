@@ -1,11 +1,12 @@
-import dotenv           from 'dotenv';
-import mongoose         from "mongoose";
-import express          from 'express';
-import * as controllers from './controllers';
-import path             from 'path';
-import session          from 'express-session';
-import flash            from 'connect-flash';
-import bodyParser       from 'body-parser';
+import dotenv               from 'dotenv';
+import mongoose             from "mongoose";
+import express              from 'express';
+import * as controllers     from './controllers';
+import path                 from 'path';
+import session              from 'express-session';
+import flash                from 'connect-flash';
+import bodyParser           from 'body-parser';
+import EmailServiceProvider from "./providers/email/EmailServiceProvider";
 
 dotenv.load();
 const app = new express();

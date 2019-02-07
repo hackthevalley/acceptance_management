@@ -1,3 +1,10 @@
+import './setup';
+import {_hackers}           from "./_hackers";
+import Hacker               from "../models/Hacker";
+import EmailServiceProvider from "../providers/email/EmailServiceProvider";
+import {replaceVariable}    from "./utils";
+
+const htmlTemplate = `
 <!doctype html>
 <html>
     <head>
@@ -53,3 +60,38 @@
             </div>
     </body>
 </html>
+`;
+
+const textTemplate = `HTV III Acceptance
+
+Hi, FULLNAME!
+
+🎉 Congratulations, after reviewing our Round 1 Applications, you have been accepted to attend Hack the Valley III on February 22-24, 2019 at the University of Toronto Scarborough!
+
+❗Please visit ACCEPTANCE_LINK to confirm or decline your spot at the hackathon!
+You must accept this invitation within 5 days.
+
+For hackers coming from The University of Waterloo, we are sending a bus to your campus! You can purchase your tickets at: https://bit.ly/2MWSbta. All details about the bus routes, and timings are in the link! We will not be providing any travel reimbursements this year.
+
+Registration for the hackathon will start at 6:00 PM on Friday, February 22nd. ⌛ If you are coming late to the hackathon after 9:00 PM, please let us know at hello@hackthevalley.io. ⌛  Further information will follow once you accept your invitation.
+
+We are looking forward to having you at Hack the Valley III!
+Hack the Valley Team`;
+
+async function sendToHacker(email) {
+    let hacker = await Hacker.findOne({email_address: email});
+    if(hacker) {
+        let fullName = `${hacker.first_name} ${hacker.last_name}`;
+        let code = hacker.acceptance_code;
+        let html = replaceVariable(htmlTemplate, 'ACCEPTANCE_LINK', `https://acceptance.hackthevalley.io/offers?code=${code}`);
+        html = replaceVariable(html, 'FULLNAME', fullName);
+        let text = replaceVariable(textTemplate, 'ACCEPTANCE_LINK', `https://acceptance.hackthevalley.io/offers?code=${code}`);
+        text = replaceVariable(text, 'FULLNAME', fullName);
+        await EmailServiceProvider.send(email, "HTV III Acceptance", html, text);
+        console.log("Email sent...", email);
+    }
+}
+
+(async () => {
+    await sendToHacker("jun.zheng@mail.utoronto.ca");
+})();
