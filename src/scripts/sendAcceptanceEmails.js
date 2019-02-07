@@ -43,7 +43,7 @@ const htmlTemplate = `
             🎉 Congratulations, after reviewing our Round 1 Applications, you have been accepted to attend <b>Hack the Valley III on February 22-24, 2019 at the University of Toronto Scarborough!</b>
         </p>
         <p>
-            <b>❗Please visit <a href="ACCEPTANCE_LINK">here</a> confirm or decline your spot at the hackathon!
+            <b>❗Please visit <a href="ACCEPTANCE_LINK">here</a> to confirm or decline your spot at the hackathon!
                 You must accept this invitation within 5 days.</b>
         </p>
 
@@ -93,5 +93,7 @@ async function sendToHacker(email) {
 }
 
 (async () => {
-    await sendToHacker("jun.zheng@mail.utoronto.ca");
+    for(let email of _hackers) {
+        await sendToHacker(email);
+    }
 })();
