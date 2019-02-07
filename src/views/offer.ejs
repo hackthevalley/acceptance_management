@@ -1,0 +1,36 @@
+<% include partials/head.ejs %>
+
+<div class="container-sm centered pt-5 pb-5">
+    <img src="https://i.imgur.com/u0njJPq.png" alt="logo" class="main-logo"/>
+
+    <h1>Hi, <%= hacker.first_name %> <%= hacker.last_name %>!</h1>
+
+    <% include partials/messages.ejs %>
+
+    <p>
+        🎉 Congratulations! You have been accepted to attend Hack the Valley III on February 22-24, 2019 at the University of Toronto Scarborough!
+    </p>
+
+    <p>
+        To confirm or decline this offer, please enter <code>confirm</code>, and click the appropriate button below!
+    </p>
+
+    <hr/>
+
+    <form action="/offers/accept" method="post">
+        <input type="hidden" name="code" value="<%= hacker.acceptance_code %>" />
+        <button class="btn btn-success btn-lg">
+            <i class="fa fa-check" aria-hidden="true"></i> Accept
+        </button>
+    </form>
+    <br/>
+    <form action="/offers/decline" method="post">
+        <input type="hidden" name="code" value="<%= hacker.acceptance_code %>" />
+        <button class="btn btn-danger btn-lg">
+            <i class="fa fa-times" aria-hidden="true"></i> Decline
+        </button>
+    </form>
+
+</div>
+
+<% include partials/foot.ejs %>

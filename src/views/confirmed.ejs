@@ -1,0 +1,32 @@
+<% include partials/head.ejs %>
+
+<div class="container-sm centered pt-5 pb-5">
+    <img src="https://i.imgur.com/u0njJPq.png" alt="logo" class="main-logo"/>
+
+    <h1>Hi, <%= hacker.first_name %> <%= hacker.last_name %>!</h1>
+
+    <% include partials/messages.ejs %>
+
+    <h3>
+        🎉 You have confirmed your attendance. See you on February 22nd!
+    </h3>
+
+    <img src="http://api.qrserver.com/v1/create-qr-code/?data=<%= hacker._id %>&size=150x150" />
+    <br/><br/>
+
+    <p>On the day of the event, simply show this page on your phone to check-in.</p>
+
+    <p>
+        In the meantime, please keep an eye on our <a href="https://hackthevalley.io">website</a> for news and announcements.
+    </p>
+
+    <p>
+        Please join our official HTV III participant Facebook group <a href="https://www.facebook.com/groups/2275018856113197/">here</a>.<br/>
+        You can also join our Slack <a href="https://bit.ly/2t7VAvZ">here</a>.
+    </p>
+
+    <hr/>
+
+</div>
+
+<% include partials/foot.ejs %>

@@ -1,0 +1,26 @@
+<% include partials/head.ejs %>
+
+<div class="container-sm centered pt-5 pb-5">
+    <img src="https://i.imgur.com/u0njJPq.png" alt="logo" class="main-logo"/>
+
+    <h1>Received Your Acceptance?</h1>
+
+    <% include partials/messages.ejs %>
+
+    <p>
+        Click on the link provided within your acceptance email to manage your acceptance.
+        <br/>
+        Or you can enter your redemption code below:
+    </p>
+
+    <hr/>
+
+    <form action="/offers" method="get">
+        <input type="text" name="code" placeholder="Redemption Code" class="form-control form-control-lg centered"/>
+        <br/>
+        <button class="btn btn-success btn-lg">Submit</button>
+    </form>
+
+</div>
+
+<% include partials/foot.ejs %>
