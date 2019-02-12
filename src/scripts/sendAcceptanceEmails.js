@@ -1,5 +1,5 @@
 import './setup';
-import {_hackers}           from "./_hackers";
+import {_hackers2}           from "./_hackers2";
 import Hacker               from "../models/Hacker";
 import EmailServiceProvider from "../providers/email/EmailServiceProvider";
 import {replaceVariable}    from "./utils";
@@ -40,7 +40,7 @@ const htmlTemplate = `
         <h1>HTV III Acceptance</h1>
             <p>Hi, FULLNAME!</p>
         <p>
-            🎉 Congratulations, after reviewing our Round 1 Applications, you have been accepted to attend <b>Hack the Valley III on February 22-24, 2019 at the University of Toronto Scarborough!</b>
+            🎉 Congratulations, after reviewing our Round 2 Applications, you have been accepted to attend <b>Hack the Valley III on February 22-24, 2019 at the University of Toronto Scarborough!</b>
         </p>
         <p>
             <b>❗Please visit <a href="ACCEPTANCE_LINK">here</a> to confirm or decline your spot at the hackathon!
@@ -66,7 +66,7 @@ const textTemplate = `HTV III Acceptance
 
 Hi, FULLNAME!
 
-🎉 Congratulations, after reviewing our Round 1 Applications, you have been accepted to attend Hack the Valley III on February 22-24, 2019 at the University of Toronto Scarborough!
+🎉 Congratulations, after reviewing our Round 2 Applications, you have been accepted to attend Hack the Valley III on February 22-24, 2019 at the University of Toronto Scarborough!
 
 ❗Please visit ACCEPTANCE_LINK to confirm or decline your spot at the hackathon!
 You must accept this invitation within 5 days.
@@ -93,7 +93,7 @@ async function sendToHacker(email) {
 }
 
 (async () => {
-    for(let email of _hackers) {
+    for(let email of _hackers2) {
         await sendToHacker(email);
     }
 })();

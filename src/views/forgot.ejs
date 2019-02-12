@@ -1,0 +1,25 @@
+<% include partials/head.ejs %>
+
+<div class="container-sm centered pt-5 pb-5">
+    <img src="https://i.imgur.com/u0njJPq.png" alt="logo" class="main-logo"/>
+
+    <h1>Forgot Password</h1>
+
+    <% include partials/messages.ejs %>
+
+    <p>
+        Enter your email address below, we will send a password reset code to you.
+    </p>
+
+    <hr/>
+
+    <form action="/forgot" method="post">
+        <input type="text" name="email" placeholder="Email Address" class="form-control form-control-lg centered"/>
+        <br/>
+        <button class="btn btn-success btn-lg"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Send</button>
+    </form>
+    <br/>
+    <a href="/" class="btn btn-link btn-lg">Login</a>
+</div>
+
+<% include partials/foot.ejs %>

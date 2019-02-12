@@ -26,6 +26,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "graphql-request": "^1.8.2",
     "mongoose": "^5.4.10",
     "uuid": "^3.3.2"
   },

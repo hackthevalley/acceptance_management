@@ -1,0 +1,33 @@
+<% include partials/head.ejs %>
+
+<div class="container-sm centered pt-5 pb-5">
+    <img src="https://i.imgur.com/u0njJPq.png" alt="logo" class="main-logo"/>
+
+    <h1>Reset Password</h1>
+
+    <% include partials/messages.ejs %>
+
+    <div class="alert alert-success" role="alert">
+        We have sent an email to the email address. Please enter the reset code below.<br/>
+        If you cannot find the email, check your spam box.
+    </div>
+
+    <p>
+        Enter your password reset code and a new password below.
+    </p>
+
+    <hr/>
+
+    <form action="/reset" method="post">
+        <input type="hidden" name="email" value="<%= email %>" />
+        <input type="text" name="code" placeholder="Reset Code" class="form-control form-control-lg centered"/>
+        <br/>
+        <input type="password" name="password" placeholder="New Password (min 8 chars)" class="form-control form-control-lg centered"/>
+        <br/>
+        <button class="btn btn-success btn-lg"><i class="fa fa-check" aria-hidden="true"></i> Reset</button>
+    </form>
+    <br/>
+    <a href="/forgot" class="btn btn-link btn-lg">Send Again</a>
+</div>
+
+<% include partials/foot.ejs %>
